@@ -32,7 +32,7 @@ async def export_play_list(client, message: Message):
     file=f"{message.chat.id}_{message.message_id}.json"
     with open(file, 'w+') as outfile:
         json.dump(Config.playlist, outfile, indent=4)
-    await client.send_document(chat_id=message.chat.id, document=file, file_name="PlayList.json", caption=f"Playlist\n\nNumber Of Songs: <code>{len(Config.playlist)}</code>\n\nJoin [XTZ Bots](https://t.me/subin_works)")
+    await client.send_document(chat_id=message.chat.id, document=file, file_name="PlayList.json", caption=f"Playlist\n\nNumber Of Songs: <code>{len(Config.playlist)}</code>\n\nJoin [UnlimitedWorldTeam](https://t.me/UnlimitedWorldTeam)")
     try:
         os.remove(file)
     except:
@@ -42,7 +42,7 @@ async def export_play_list(client, message: Message):
 async def import_playlist(client, m: Message):
     if m.reply_to_message is not None and m.reply_to_message.document:
         if m.reply_to_message.document.file_name != "PlayList.json":
-            k=await m.reply("Invalid PlayList file given. Use @GetPlayListBot to get a playlist file. Or Export your current Playlist using /export.")
+            k=await m.reply("Please Give Me correct Playlist link Or Export your current Playlist using /export.")
             return
         myplaylist=await m.reply_to_message.download()
         status=await m.reply("Trying to get details from playlist.")
@@ -60,4 +60,4 @@ async def import_playlist(client, m: Message):
         else:
             await status.delete()
     else:
-        await m.reply("No playList file given. Use @GetPlayListBot  or search for a playlist in @DumpPlaylist to get a playlist file.")
+        await m.reply("Please Give Me correct Playlist link !!")
