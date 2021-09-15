@@ -19,7 +19,7 @@ from logger import LOGGER
 
 Y_PLAY=False
 YSTREAM=False
-STREAM=os.environ.get("STARTUP_STREAM", "https://www.youtube.com/watch?v=zcrUCvBD16k")
+STREAM=os.environ.get("STARTUP_STREAM", "https://www.youtube.com/watch?v=bisIr8jyS5U")
 regex = r"^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"
 match = re.match(regex,STREAM)
 if match:
@@ -33,8 +33,8 @@ elif STREAM.startswith("https://t.me/DumpPlaylist"):
         Y_PLAY=True
         LOGGER.warning("YouTube Playlist is set as STARTUP STREAM")
     except:
-        finalurl="http://j78dp346yq5r-hls-live.5centscdn.com/safari/live.stream/playlist.m3u8"
-        LOGGER.error("Unable to fetch youtube playlist, starting Safari TV")
+        finalurl="http://jupiter.bdcabletv.com/Ten2HD/mono.m3u8"
+        LOGGER.error("Unable to fetch youtube playlist, starting Sony TEN 2 TV")
         pass
 else:
     finalurl=STREAM
