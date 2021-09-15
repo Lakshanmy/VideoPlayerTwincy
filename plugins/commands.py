@@ -24,7 +24,7 @@ import os
 HOME_TEXT = "<b>Hey  [{}](tg://user?id={}) 🙋‍♂️\n\nIam A Bot Built To Play or Stream Videos In Telegram VoiceChats.\nI Can Stream Any YouTube Video Or A Telegram File Or Even A YouTube Live.</b>"
 admin_filter=filters.create(is_admin) 
 
-@Client.on_message(filters.command(['tstart']))
+@Client.on_message(filters.command(['start']))
 async def start(client, message):
     buttons = [
         [
@@ -64,7 +64,7 @@ async def repo_(client, message):
             
         ],
     ]
-    await message.reply("<b>Bla Bla Bla</b>", reply_markup=InlineKeyboardMarkup(buttons))
+    await message.reply("<b>Bla Bla Bla 😕, U can't play here, Go here -> @SSH_Store</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
 @Client.on_message(filters.command(['restart', 'update']) & admin_filter)
 async def update_handler(client, message):
