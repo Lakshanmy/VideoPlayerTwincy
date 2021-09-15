@@ -24,7 +24,7 @@ import os
 HOME_TEXT = "<b>Hey  [{}](tg://user?id={}) 🙋‍♂️\n\nIam A Bot Built To Play or Stream Videos In Telegram VoiceChats.\nI Can Stream Any YouTube Video Or A Telegram File Or Even A YouTube Live.</b>"
 admin_filter=filters.create(is_admin) 
 
-@Client.on_message(filters.command(['start', f"start@{Config.BOT_USERNAME}"]))
+@Client.on_message(filters.command(['tstart']))
 async def start(client, message):
     buttons = [
         [
@@ -40,7 +40,7 @@ async def start(client, message):
 
 
 
-@Client.on_message(filters.command(["help", f"help@{Config.BOT_USERNAME}"]))
+@Client.on_message(filters.command(["help"]))
 async def show_help(client, message):
     buttons = [
         [
@@ -55,7 +55,7 @@ async def show_help(client, message):
         Config.HELP,
         reply_markup=reply_markup
         )
-@Client.on_message(filters.command(['repo', f"repo@{Config.BOT_USERNAME}"]))
+@Client.on_message(filters.command(['info']))
 async def repo_(client, message):
     buttons = [
         [
@@ -66,12 +66,12 @@ async def repo_(client, message):
     ]
     await message.reply("<b>Bla Bla Bla</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
-@Client.on_message(filters.command(['restart', 'update', f"restart@{Config.BOT_USERNAME}", f"update@{Config.BOT_USERNAME}"]) & admin_filter)
+@Client.on_message(filters.command(['restart', 'update']) & admin_filter)
 async def update_handler(client, message):
     await message.reply("Updating and restarting the bot.")
     await update()
 
-@Client.on_message(filters.command(['logs', f"logs@{Config.BOT_USERNAME}"]) & admin_filter)
+@Client.on_message(filters.command(['logs']) & admin_filter)
 async def get_logs(client, message):
     logs=[]
     if os.path.exists("ffmpeg.txt"):
